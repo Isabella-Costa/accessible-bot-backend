@@ -1,0 +1,17 @@
+### Buscar todos os lembretes
+GET http://localhost:3000/api/lembretes
+
+### Criar um novo lembrete
+POST http://localhost:3000/api/lembretes
+Content-Type: application/json
+
+{
+  "titulo": "Regar as plantas",
+  "descricao": "Lembrar de regar as plantas da varanda",
+  "data": "2025-11-11",
+  "horaInicio": "08:00",
+  "horaFim": "09:00"
+}
+
+### Deletar um lembrete
+DELETE http://localhost:3000/api/lembretes/1

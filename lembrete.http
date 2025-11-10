@@ -1,0 +1,11 @@
+### Criar um novo lembrete
+POST http://localhost:3000/api/lembretes
+Content-Type: application/json
+
+{
+  "titulo": "Ir a Terapia",
+  "descricao": "Lembrar de ir a terapia",
+  "data": "2025-11-11T00:00:00.000Z",
+  "horaInicio": "08:00",
+  "horaFim": "09:00"
+}

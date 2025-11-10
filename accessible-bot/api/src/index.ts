@@ -7,14 +7,15 @@ import prisma from './prisma';
 
 import userRoutes from './routes/userRoutes';
 import chatRoutes from './routes/chatRoutes';
-import authRouter from './routes/authRoutes'; 
+import authRouter from './routes/authRoutes';
 import faqRoutes from './routes/faqRoutes';
+import lembreteRoutes from './routes/lembretes'; // ✅ novo import
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from './docs/swaggerConfig'; 
+import swaggerSpec from './docs/swaggerConfig';
 
 import { ChatController } from './controllers/chatController';
-import { LembreteController } from './controllers/lembreteController';
+import { LembreteController } from './controllers/lembreteController'; // opcional se usar só no router
 dotenv.config();
 
 const app = express();
@@ -31,17 +32,18 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// ✅ Rotas
 app.use('/api', userRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', authRouter);
 app.use('/api', faqRoutes);
+app.use('/api/lembretes', lembreteRoutes); 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use('/api/lembrete', faqRoutes);
+
 app.use(express.static('src/websocket'));
 
 const server = http.createServer(app);
 new ChatController(server);
-
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
