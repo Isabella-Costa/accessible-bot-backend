@@ -84,3 +84,15 @@ model ConversationSummary {
   historicId        String             @unique
   historic          Historic           @relation(fields: [historicId], references: [historicId])
 }
+
+model Lembrete {
+  id         Int      @id @default(autoincrement())
+  titulo     String
+  descricao  String?  // '?' = opcional
+  data       DateTime // Armazena a data
+  horaInicio String?  // Armazena "HH:MM" (opcional)
+  horaFim    String?  // Armazena "HH:MM" (opcional)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+

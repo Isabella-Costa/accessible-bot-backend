@@ -14,14 +14,14 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './docs/swaggerConfig'; 
 
 import { ChatController } from './controllers/chatController';
-
+import { LembreteController } from './controllers/lembreteController';
 dotenv.config();
 
 const app = express();
 
 prisma.$connect()
   .then(() => console.log('Conectado ao PostgreSQL via Prisma!'))
-  .catch(err => console.error('Erro na conexão Prisma → PostgreSQL:', err));
+  .catch((err: any) => console.error('Erro na conexão Prisma → PostgreSQL:', err));
 
 app.use(cors({
   origin: '*',
@@ -36,7 +36,7 @@ app.use('/api', chatRoutes);
 app.use('/api', authRouter);
 app.use('/api', faqRoutes);
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use('/api/lembrete', faqRoutes);
 app.use(express.static('src/websocket'));
 
 const server = http.createServer(app);
