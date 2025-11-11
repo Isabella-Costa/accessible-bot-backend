@@ -9,13 +9,13 @@ import userRoutes from './routes/userRoutes';
 import chatRoutes from './routes/chatRoutes';
 import authRouter from './routes/authRoutes';
 import faqRoutes from './routes/faqRoutes';
-import lembreteRoutes from './routes/lembretes'; // ✅ novo import
+import lembreteRoutes from './routes/lembretes'; 
 
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './docs/swaggerConfig';
 
 import { ChatController } from './controllers/chatController';
-import { LembreteController } from './controllers/lembreteController'; // opcional se usar só no router
+import { LembreteController } from './controllers/lembreteController'; 
 dotenv.config();
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ✅ Rotas
+// Rotas
 app.use('/api', userRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', authRouter);
